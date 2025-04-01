@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>狸貓社群恢復營業 抽獎活動</title>
+  <link rel="icon" href="icon.png" type="image/x-icon"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 引入 Google 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <!-- 外部 CSS 檔案 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background"></div>
+  
+  <!-- 固定 header，包含標題與抽獎品項 -->
+  <div class="header-container">
+    <h1>慶祝恢復營業！所以來抽獎w</h1>
+    <h3>不是愚人節玩笑好嗎?</h3>
+    <div id="prizeDisplay" class="prize"></div>
+  </div>
+  
+  <!-- 主要內容區 -->
+  <div class="container" id="mainContent">
+    <!-- Discord 輸入表單 -->
+    <div id="discordForm">
+      <label for="discordInput">您的 Discord 名稱？</label>
+      <input type="text" id="discordInput" placeholder="請輸入你的 Discord ID" required title="請勿使用全連續數字或英文字">
+      
+      <label for="serverSelect">您在哪裡看到此消息？</label>
+      <select id="serverSelect" required>
+        <option value="狸貓社群">狸貓社群</option>
+        <option value="新夜商城">新夜商城</option>
+        <option value="Ty商城">Ty商城</option>
+        <option value="皮卡呱小舖">皮卡呱小舖</option>
+      </select>
+      
+      <!-- Discord 輸入錯誤訊息 -->
+      <div id="discordErrorMessage" class="error-message"></div>
+      
+      <input type="submit" id="discordSubmit" class="btn" value="送出">
+    </div>
+    
+    <!-- 開始抽獎按鈕（初始隱藏） -->
+    <button id="lotteryBtn" class="btn" disabled style="display:none;">點我開始抽獎</button>
+    
+    <!-- 電子郵件表單（含驗證碼輸入與生成按鈕） -->
+    <div id="emailForm" class="email-form" style="display:none;">
+      <label for="emailInput">電子郵件</label>
+      <!-- Email 驗證：要求 @ 後面至少包含一個 '.' -->
+      <input type="email" id="emailInput" placeholder="example@mail.com" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$" title="請輸入有效的電子郵件，必須包含 '@' 與正確的網域">
+      
+      <label for="verificationInput">驗證碼</label>
+      <div class="verification-container">
+        <input type="text" id="verificationInput" placeholder="請輸入驗證碼" required disabled>
+        <button id="generateCodeBtn" class="btn generate-code-btn" type="button">生成驗證碼</button>
+      </div>
+      
+      <!-- Email 驗證錯誤訊息 -->
+      <div id="emailErrorMessage" class="error-message"></div>
+      
+      <input type="submit" id="emailSubmit" class="btn" value="送出">
+    </div>
+  </div>
+  
+  <footer>
+    &copy; 2025 狸貓社群－商城、社群、Minecraft伺服器
+  </footer>
+  
+  <!-- 外部 JavaScript 檔案 -->
+  <script src="script.js"></script>
+</body>
+</html>

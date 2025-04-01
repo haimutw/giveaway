@@ -1,0 +1,341 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  overflow: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 背景動畫 */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at center, #1a1a1a, #000000);
+  animation: backgroundMove 10s infinite alternate;
+}
+
+@keyframes backgroundMove {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+/* 固定 header 區：標題與抽獎品項固定於上方 30vh 處，置中 */
+.header-container {
+  position: fixed;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 100;
+  width: 100%;
+  pointer-events: none; /* header 區內元素不影響下方表單操作 */
+}
+
+.header-container h1,
+.header-container .prize {
+  pointer-events: auto; /* 使標題與獎品仍可點擊或選取 */
+}
+
+/* 主要容器 */
+.container {
+  max-width: 480px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  margin-top: 30vh; /* 預留 header 固定區域 */
+  flex: 1;
+}
+
+/* 標題樣式 */
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 抽獎品項樣式 */
+.prize {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  min-height: 50px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 錯誤訊息樣式 */
+.error-message {
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  text-align: left;
+}
+
+/* 標籤樣式 */
+label {
+  font-size: 1em;
+  margin-bottom: 5px;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+/* 輸入欄位與下拉式選單 */
+input[type="text"],
+input[type="email"],
+select {
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  margin-bottom: 15px;
+  width: 100%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+/* 下拉式選單樣式同步 */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px;
+  font-size: 1em;
+  width: 100%;
+  transition: background 0.3s, transform 0.3s;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%227%22%20viewBox%3D%220%200%2010%207%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%200l5%207%205-7z%22%20fill%3D%22%23fff%22/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 7px;
+}
+
+select:hover {
+  transform: scale(1.02);
+}
+
+select:focus {
+  outline: none;
+}
+
+/* 按鈕樣式 */
+.btn {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 12px 25px;
+  font-size: 1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* 若原本有 .verification-container，請先移除或覆蓋 */
+
+.verification-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /* 與其他欄位保持一點間距 */
+}
+
+.verification-row input {
+  /* 左側輸入框樣式 */
+  flex: 1; /* 讓輸入框自動撐滿可用寬度 */
+  border: 1px solid #d9d9d9; /* 淺灰邊框 */
+  border-right: none; /* 與按鈕連接處不需要邊框 */
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 10px;
+  color: #333; /* 文字顏色 */
+  background-color: #fdfdfd; /* 背景色 */
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.verification-row button {
+  /* 右側按鈕樣式 */
+  border: 1px solid #d9d9d9;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.verification-row button:hover {
+  background-color: #e6e6e6;
+}
+
+/* 電子郵件表單區塊 */
+.email-form {
+  margin-top: 20px;
+}
+
+/* 全螢幕影片容器（用作驗證碼影片） */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #000;
+}
+
+/* 內部的 iframe */
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 驗證碼覆蓋文字 */
+.code-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 2em;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+/* Footer 置底 */
+footer {
+  background-color: #1a1a1a;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+  margin-top: auto;
+  width: 100%;
+}
+
+/* 全螢幕影片覆蓋層 */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 黑色遮擋，上下各 20vh，懸浮於影片之上 */
+.black-overlay-top,
+.black-overlay-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  background-color: #000;
+  z-index: 1000;
+}
+
+.black-overlay-top {
+  top: 0;
+}
+
+.black-overlay-bottom {
+  bottom: 0;
+}
+
+/* 訊息覆蓋層（顯示文字） */
+.message-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 2em;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1001;
+  display: block;
+}
+
+/* 預設樣式，針對大尺寸裝置 */
+body {
+  font-size: 18px;
+  padding: 20px;
+}
+
+/* 針對手機 (螢幕寬度 480px 以下) */
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .header-container {
+    top: 10vh;
+  }
+}
+
+/* 針對平板 (螢幕寬度介於 481px 至 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  body {
+    font-size: 16px;
+    padding: 15px;
+  }
+  .header-container {
+    top: 10vh;
+  }
+}
+
